@@ -472,9 +472,325 @@
                 font-size: 24px;
             }
         }
+
+        /* အသစ်ထပ်ဖြည့်ထားသော စတိုင်များ */
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #4caf50;
+            color: white;
+            padding: 15px 25px;
+            border-radius: 4px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+            z-index: 1001;
+            display: none;
+        }
+        
+        .cart-count {
+            background: #ff5722;
+            color: white;
+            border-radius: 50%;
+            padding: 2px 6px;
+            font-size: 12px;
+            margin-left: 5px;
+        }
+        
+        .discount-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: #ff5722;
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        
+        .product-card {
+            position: relative;
+        }
+        
+        .rating {
+            color: #ffc107;
+            margin: 5px 0;
+        }
+        
+        /* အသစ်ထပ်ထည့်ထားသော စတိုင်များ */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal-content {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            max-width: 500px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+        
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .close-modal {
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: #777;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+        
+        .form-group input, .form-group textarea, .form-group select {
+            width: 100%;
+            padding: 8px 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        
+        .form-group textarea {
+            height: 100px;
+            resize: vertical;
+        }
+        
+        .payment-methods {
+            display: flex;
+            gap: 10px;
+            margin: 15px 0;
+        }
+        
+        .payment-method {
+            flex: 1;
+            text-align: center;
+            padding: 10px;
+            border: 2px solid #ddd;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .payment-method.active {
+            border-color: #2e7d32;
+            background: #f8fdf5;
+        }
+        
+        .user-profile {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #2e7d32;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+        
+        .product-detail-modal .product-image {
+            height: 300px;
+            margin-bottom: 20px;
+        }
+        
+        .order-summary {
+            background: #f9f9f9;
+            padding: 15px;
+            border-radius: 4px;
+            margin: 15px 0;
+        }
+        
+        .order-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        
+        .order-total {
+            border-top: 1px solid #ddd;
+            padding-top: 10px;
+            margin-top: 10px;
+            font-weight: bold;
+            font-size: 18px;
+        }
     </style>
 </head>
 <body>
+    <!-- အသိပေးချက် -->
+    <div class="notification" id="notification">
+        ထုတ်ကုန်ကို ဈေးခြင်းထဲသို့ ထည့်သွင်းပြီးပါပြီ!
+    </div>
+
+    <!-- Modal များ -->
+    <div class="modal" id="loginModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>အကောင့်ဝင်ရန်</h2>
+                <button class="close-modal" onclick="closeModal('loginModal')">&times;</button>
+            </div>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="email">အီးမေးလ်</label>
+                    <input type="email" id="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">စကားဝှက်</label>
+                    <input type="password" id="password" required>
+                </div>
+                <button type="submit" class="btn" style="width: 100%; margin-top: 10px;">ဝင်ရောက်ရန်</button>
+            </form>
+            <p style="text-align: center; margin-top: 15px;">အကောင့်မရှိသေးပါက <a href="#" onclick="showRegister()">အကောင့်အသစ်ဖွင့်ရန်</a></p>
+        </div>
+    </div>
+
+    <div class="modal" id="registerModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>အကောင့်အသစ်ဖွင့်ရန်</h2>
+                <button class="close-modal" onclick="closeModal('registerModal')">&times;</button>
+            </div>
+            <form id="registerForm">
+                <div class="form-group">
+                    <label for="regName">အမည်</label>
+                    <input type="text" id="regName" required>
+                </div>
+                <div class="form-group">
+                    <label for="regEmail">အီးမေးလ်</label>
+                    <input type="email" id="regEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="regPhone">ဖုန်းနံပါတ်</label>
+                    <input type="tel" id="regPhone" required>
+                </div>
+                <div class="form-group">
+                    <label for="regPassword">စကားဝှက်</label>
+                    <input type="password" id="regPassword" required>
+                </div>
+                <div class="form-group">
+                    <label for="regConfirmPassword">စကားဝှက်အတည်ပြုရန်</label>
+                    <input type="password" id="regConfirmPassword" required>
+                </div>
+                <button type="submit" class="btn" style="width: 100%; margin-top: 10px;">အကောင့်ဖွင့်ရန်</button>
+            </form>
+            <p style="text-align: center; margin-top: 15px;">အကောင့်ရှိပြီးသားဆိုပါက <a href="#" onclick="showLogin()">ဝင်ရောက်ရန်</a></p>
+        </div>
+    </div>
+
+    <div class="modal" id="productDetailModal">
+        <div class="modal-content product-detail-modal">
+            <div class="modal-header">
+                <h2 id="detailProductTitle">ထုတ်ကုန်အသေးစိတ်</h2>
+                <button class="close-modal" onclick="closeModal('productDetailModal')">&times;</button>
+            </div>
+            <div id="detailProductContent">
+                <!-- Product details will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="checkoutModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>အော်ဒါတင်သွင်းရန်</h2>
+                <button class="close-modal" onclick="closeModal('checkoutModal')">&times;</button>
+            </div>
+            <div class="order-summary" id="orderSummary">
+                <!-- Order summary will be loaded here -->
+            </div>
+            <form id="checkoutForm">
+                <div class="form-group">
+                    <label for="customerName">အမည်</label>
+                    <input type="text" id="customerName" required>
+                </div>
+                <div class="form-group">
+                    <label for="customerPhone">ဖုန်းနံပါတ်</label>
+                    <input type="tel" id="customerPhone" required>
+                </div>
+                <div class="form-group">
+                    <label for="customerAddress">လိပ်စာ</label>
+                    <textarea id="customerAddress" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label>ငွေပေးချေမှုနည်းလမ်း</label>
+                    <div class="payment-methods">
+                        <div class="payment-method" onclick="selectPayment('kbz')">
+                            <i class="fas fa-mobile-alt"></i>
+                            <p>KBZ Pay</p>
+                        </div>
+                        <div class="payment-method" onclick="selectPayment('wave')">
+                            <i class="fas fa-money-bill-wave"></i>
+                            <p>Wave Money</p>
+                        </div>
+                        <div class="payment-method" onclick="selectPayment('cash')">
+                            <i class="fas fa-money-bill"></i>
+                            <p>ငွေသား</p>
+                        </div>
+                    </div>
+                    <input type="hidden" id="paymentMethod" required>
+                </div>
+                <button type="submit" class="btn" style="width: 100%; margin-top: 10px;">အော်ဒါတင်သွင်းရန်</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="modal" id="contactModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>ဆက်သွယ်ရန်</h2>
+                <button class="close-modal" onclick="closeModal('contactModal')">&times;</button>
+            </div>
+            <form id="contactForm">
+                <div class="form-group">
+                    <label for="contactName">အမည်</label>
+                    <input type="text" id="contactName" required>
+                </div>
+                <div class="form-group">
+                    <label for="contactEmail">အီးမေးလ်</label>
+                    <input type="email" id="contactEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="contactSubject">ခေါင်းစဉ်</label>
+                    <input type="text" id="contactSubject" required>
+                </div>
+                <div class="form-group">
+                    <label for="contactMessage">မက်ဆေ့ချ်</label>
+                    <textarea id="contactMessage" required></textarea>
+                </div>
+                <button type="submit" class="btn" style="width: 100%; margin-top: 10px;">မက်ဆေ့ချ်ပို့ရန်</button>
+            </form>
+        </div>
+    </div>
+
     <!-- ခေါင်းစီးကဏ္ဍ -->
     <header>
         <div class="container">
@@ -484,23 +800,24 @@
                     စိမ်းမြနေခြည်
                 </div>
                 <div class="search-bar">
-                    <input type="text" placeholder="ထုတ်ကုန်များ ရှာဖွေရန်...">
-                    <button><i class="fas fa-search"></i></button>
+                    <input type="text" placeholder="ထုတ်ကုန်များ ရှာဖွေရန်..." id="searchInput">
+                    <button id="searchButton"><i class="fas fa-search"></i></button>
                 </div>
                 <div class="user-actions">
-                    <a href="#"><i class="fas fa-user"></i> အကောင့်ဝင်ရန်</a>
-                    <a href="#"><i class="fas fa-shopping-cart"></i> ဈေးခြင်း</a>
+                    <a href="#" id="loginLink"><i class="fas fa-user"></i> အကောင့်ဝင်ရန်</a>
+                    <a href="#" id="cartLink"><i class="fas fa-shopping-cart"></i> ဈေးခြင်း <span class="cart-count" id="cartCount">0</span></a>
                 </div>
             </div>
         </div>
         <nav>
             <div class="container">
                 <ul class="nav-menu">
-                    <li><a href="#"><i class="fas fa-home"></i> ပင်မ</a></li>
-                    <li><a href="#"><i class="fas fa-shopping-bag"></i> ဈေးဝယ်</a></li>
-                    <li><a href="#"><i class="fas fa-lightbulb"></i> အကြံပေး</a></li>
-                    <li><a href="#"><i class="fas fa-comments"></i> ဆွေးနွေး</a></li>
-                    <li><a href="#"><i class="fas fa-info-circle"></i> ကျွန်ုပ်တို့အကြောင်း</a></li>
+                    <li><a href="#" onclick="showHome()"><i class="fas fa-home"></i> ပင်မ</a></li>
+                    <li><a href="#" onclick="showProducts()"><i class="fas fa-shopping-bag"></i> ဈေးဝယ်</a></li>
+                    <li><a href="#" onclick="showAdvice()"><i class="fas fa-lightbulb"></i> အကြံပေး</a></li>
+                    <li><a href="#" onclick="showDiscussion()"><i class="fas fa-comments"></i> ဆွေးနွေး</a></li>
+                    <li><a href="#" onclick="showAbout()"><i class="fas fa-info-circle"></i> ကျွန်ုပ်တို့အကြောင်း</a></li>
+                    <li><a href="#" onclick="showContact()"><i class="fas fa-envelope"></i> ဆက်သွယ်ရန်</a></li>
                 </ul>
             </div>
         </nav>
@@ -514,7 +831,7 @@
                 <div class="hero-banner">
                     <h1>စိမ်းမြနေခြည် - စိုက်ပျိုးရေးအတွက် အကောင်းဆုံးရွေးချယ်မှု</h1>
                     <p>အရည်အသွေးမြင့် စိုက်ပျိုးရေးပစ္စည်းများနှင့် နည်းပညာများကို ရယူလိုက်ပါ</p>
-                    <a href="#" class="btn">ဈေးဝယ်ယူရန်</a>
+                    <a href="#" class="btn" onclick="showProducts()">ဈေးဝယ်ယူရန်</a>
                 </div>
 
                 <!-- ထုတ်ကုန်များကဏ္ဍ -->
@@ -522,30 +839,56 @@
                     <h2 class="section-title"><i class="fas fa-seedling"></i> လူကြိုက်များသော ထုတ်ကုန်များ</h2>
                     <div class="products-grid">
                         <div class="product-card">
+                            <div class="discount-badge">၁၀% လျှော့ဈေး</div>
                             <div class="product-image" style="background-image: url('https://via.placeholder.com/400x200/4caf50/ffffff?text=မျိုးစေ့')"></div>
                             <div class="product-content">
                                 <h3 class="product-title">ဆန်မျိုးစေ့</h3>
+                                <div class="rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                </div>
                                 <div class="product-price">၅၀၀၀ ကျပ်</div>
                                 <p class="product-description">အထွက်နှုန်းကောင်းသော ဆန်မျိုးစေ့များ</p>
-                                <button class="add-to-cart">ဈေးခြင်းထဲထည့်ရန်</button>
+                                <button class="add-to-cart" data-product="ဆန်မျိုးစေ့" data-price="5000" data-id="1">ဈေးခြင်းထဲထည့်ရန်</button>
+                                <button class="btn" style="width: 100%; margin-top: 5px; background: #2196f3;" onclick="showProductDetail(1)">အသေးစိတ်ကြည့်ရန်</button>
                             </div>
                         </div>
                         <div class="product-card">
                             <div class="product-image" style="background-image: url('https://via.placeholder.com/400x200/4caf50/ffffff?text=မြေဩဇာ')"></div>
                             <div class="product-content">
                                 <h3 class="product-title">အော်ဂဲနစ်မြေဩဇာ</h3>
+                                <div class="rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                </div>
                                 <div class="product-price">၁၅၀၀၀ ကျပ်</div>
                                 <p class="product-description">သဘာဝအတိုင်း ပြုလုပ်ထားသော မြေဩဇာ</p>
-                                <button class="add-to-cart">ဈေးခြင်းထဲထည့်ရန်</button>
+                                <button class="add-to-cart" data-product="အော်ဂဲနစ်မြေဩဇာ" data-price="15000" data-id="2">ဈေးခြင်းထဲထည့်ရန်</button>
+                                <button class="btn" style="width: 100%; margin-top: 5px; background: #2196f3;" onclick="showProductDetail(2)">အသေးစိတ်ကြည့်ရန်</button>
                             </div>
                         </div>
                         <div class="product-card">
+                            <div class="discount-badge">၅% လျှော့ဈေး</div>
                             <div class="product-image" style="background-image: url('https://via.placeholder.com/400x200/4caf50/ffffff?text=ပိုးသတ်ဆေး')"></div>
                             <div class="product-content">
                                 <h3 class="product-title">သဘာဝပိုးသတ်ဆေး</h3>
+                                <div class="rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
                                 <div class="product-price">၁၂၀၀၀ ကျပ်</div>
                                 <p class="product-description">သီးနှံပင်များအတွက် ဘေးကင်းသော ပိုးသတ်ဆေး</p>
-                                <button class="add-to-cart">ဈေးခြင်းထဲထည့်ရန်</button>
+                                <button class="add-to-cart" data-product="သဘာဝပိုးသတ်ဆေး" data-price="12000" data-id="3">ဈေးခြင်းထဲထည့်ရန်</button>
+                                <button class="btn" style="width: 100%; margin-top: 5px; background: #2196f3;" onclick="showProductDetail(3)">အသေးစိတ်ကြည့်ရန်</button>
                             </div>
                         </div>
                     </div>
@@ -634,14 +977,14 @@
             <div class="footer-content">
                 <div class="footer-column">
                     <h3>စိမ်းမြနေခြည်အကြောင်း</h3>
-                    <p>စိမ်းမြနေခြည်သည် စိုက်ပျိုးရေးတောင်သူကြီးများအတွက် အရည်အသွေးမြင့် ထုတ်ကုန်များနှင့် နည်းပညာများကို မျှဝေပေးသော ကုမ္ပဏီတစ်ခုဖြစ်သည်။</p>
+                    <p>စိမ်းမြနေခြည်သည် စိုက်ပျိုးရေးသမားများအတွက် အရည်အသွေးမြင့် ထုတ်ကုန်များနှင့် နည်းပညာများကို မျှဝေပေးသော ကုမ္ပဏီတစ်ခုဖြစ်သည်။</p>
                 </div>
                 <div class="footer-column">
                     <h3>အမြန်လင့်ခ်များ</h3>
                     <ul class="footer-links">
-                        <li><a href="#">ပင်မစာမျက်နှာ</a></li>
-                        <li><a href="#">ကျွန်ုပ်တို့အကြောင်း</a></li>
-                        <li><a href="#">ဆက်သွယ်ရန်</a></li>
+                        <li><a href="#" onclick="showHome()">ပင်မစာမျက်နှာ</a></li>
+                        <li><a href="#" onclick="showAbout()">ကျွန်ုပ်တို့အကြောင်း</a></li>
+                        <li><a href="#" onclick="showContact()">ဆက်သွယ်ရန်</a></li>
                         <li><a href="#">ဝန်ဆောင်မှုများ</a></li>
                         <li><a href="#">သဘောတူညီချက်များ</a></li>
                     </ul>
@@ -659,8 +1002,8 @@
                 <div class="footer-column">
                     <h3>ဆက်သွယ်ရန်</h3>
                     <ul class="footer-links">
-                        <li><i class="fas fa-map-marker-alt"></i>ရန်ကုန်-မန္တလေး လမ်း၊မြစ်လောင်း-မြစ်ငယ်၊အမရပူရမြို့။</li>
-                        <li><i class="fas fa-phone"></i> +၉၅ ၉ ၇၉၉၃၇၄၄၁၄ ၀၉ ၈၉၂၂၆၅၃၂၂ </li>
+                        <li><i class="fas fa-map-marker-alt"></i> ရန်ကုန်-မန္တလေး လမ်း၊မြစ်လောင်း-မြစ်ငယ်၊အမရပူရမြို့။န်မာနိုင်ငံ</li>
+                        <li><i class="fas fa-phone"></i> +၉၅ ၉ ၇၉၉၃၇၄၄၁၄/li>
                         <li><i class="fas fa-envelope"></i> seinmyanaychi@gmail.com</li>
                     </ul>
                     <div class="social-links">
@@ -680,9 +1023,14 @@
     <script>
         // ရိုးရှင်းသော ဂျာဗားစကရစ် လုပ်ဆောင်ချက်များ
         document.addEventListener('DOMContentLoaded', function() {
+            let cartCount = 0;
+            let cartItems = [];
+            const cartCountElement = document.getElementById('cartCount');
+            const notification = document.getElementById('notification');
+            
             // ရှာဖွေမှုလုပ်ဆောင်ချက်
-            const searchButton = document.querySelector('.search-bar button');
-            const searchInput = document.querySelector('.search-bar input');
+            const searchButton = document.getElementById('searchButton');
+            const searchInput = document.getElementById('searchInput');
             
             searchButton.addEventListener('click', function() {
                 if (searchInput.value.trim() !== '') {
@@ -699,9 +1047,11 @@
             // ထုတ်ကုန်ကတ်များကို နှိပ်လိုက်သည့်အခါ
             const productCards = document.querySelectorAll('.product-card');
             productCards.forEach(card => {
-                card.addEventListener('click', function() {
-                    const title = this.querySelector('.product-title').textContent;
-                    alert('"' + title + '" ကို ကြည့်ရှုရန်...');
+                card.addEventListener('click', function(e) {
+                    if (!e.target.classList.contains('add-to-cart') && !e.target.classList.contains('btn')) {
+                        const productId = this.querySelector('.add-to-cart').getAttribute('data-id');
+                        showProductDetail(productId);
+                    }
                 });
             });
             
@@ -710,12 +1060,270 @@
             addToCartButtons.forEach(button => {
                 button.addEventListener('click', function(e) {
                     e.stopPropagation();
-                    const product = this.closest('.product-card');
-                    const title = product.querySelector('.product-title').textContent;
-                    alert('"' + title + '" ကို ဈေးခြင်းထဲသို့ ထည့်သွင်းပြီးပါပြီ။');
+                    const product = this.getAttribute('data-product');
+                    const price = parseInt(this.getAttribute('data-price'));
+                    const id = this.getAttribute('data-id');
+                    
+                    // ဈေးခြင်းအရေအတွက်ကို တိုးမြှင့်ခြင်း
+                    cartCount++;
+                    cartCountElement.textContent = cartCount;
+                    
+                    // ဈေးခြင်းထဲသို့ထုတ်ကုန်ထည့်ခြင်း
+                    const existingItem = cartItems.find(item => item.id === id);
+                    if (existingItem) {
+                        existingItem.quantity++;
+                    } else {
+                        cartItems.push({
+                            id: id,
+                            name: product,
+                            price: price,
+                            quantity: 1
+                        });
+                    }
+                    
+                    // အသိပေးချက်ပြသခြင်း
+                    notification.textContent = '"' + product + '" ကို ဈေးခြင်းထဲသို့ ထည့်သွင်းပြီးပါပြီ!';
+                    notification.style.display = 'block';
+                    
+                    // 3 စက္ကန့်ကြာပြီးနောက် အသိပေးချက်ကို ဖျောက်ခြင်း
+                    setTimeout(function() {
+                        notification.style.display = 'none';
+                    }, 3000);
                 });
             });
+            
+            // ဈေးခြင်းလင့်ခ်ကို နှိပ်လိုက်သည့်အခါ
+            const cartLink = document.getElementById('cartLink');
+            cartLink.addEventListener('click', function(e) {
+                e.preventDefault();
+                if (cartCount === 0) {
+                    alert('သင့်ဈေးခြင်းထဲတွင် ထုတ်ကုန်မရှိပါ။');
+                } else {
+                    showCheckout();
+                }
+            });
+            
+            // အကောင့်ဝင်ရန်လင့်ခ်
+            const loginLink = document.getElementById('loginLink');
+            loginLink.addEventListener('click', function(e) {
+                e.preventDefault();
+                showLogin();
+            });
+            
+            // Form submission handlers
+            document.getElementById('loginForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                const email = document.getElementById('email').value;
+                const password = document.getElementById('password').value;
+                
+                if (email && password) {
+                    alert('အကောင့်သို့ ဝင်ရောက်ပြီးပါပြီ!');
+                    closeModal('loginModal');
+                    // Update UI to show logged in state
+                    loginLink.innerHTML = '<div class="user-profile"><div class="user-avatar">ပ</div> <span>ပြင်ဆင်ရန်</span></div>';
+                }
+            });
+            
+            document.getElementById('registerForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                const name = document.getElementById('regName').value;
+                const email = document.getElementById('regEmail').value;
+                const phone = document.getElementById('regPhone').value;
+                const password = document.getElementById('regPassword').value;
+                const confirmPassword = document.getElementById('regConfirmPassword').value;
+                
+                if (password !== confirmPassword) {
+                    alert('စကားဝှက်နှစ်ခု မတူညီပါ!');
+                    return;
+                }
+                
+                if (name && email && phone && password) {
+                    alert('အကောင့်အသစ် ဖွင့်လှစ်ပြီးပါပြီ!');
+                    closeModal('registerModal');
+                    showLogin();
+                }
+            });
+            
+            document.getElementById('checkoutForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                const name = document.getElementById('customerName').value;
+                const phone = document.getElementById('customerPhone').value;
+                const address = document.getElementById('customerAddress').value;
+                const paymentMethod = document.getElementById('paymentMethod').value;
+                
+                if (name && phone && address && paymentMethod) {
+                    alert('အော်ဒါတင်သွင်းမှု အောင်မြင်ပါသည်! ကျေးဇူးတင်ပါသည်။');
+                    closeModal('checkoutModal');
+                    
+                    // Reset cart
+                    cartCount = 0;
+                    cartItems = [];
+                    cartCountElement.textContent = cartCount;
+                }
+            });
+            
+            document.getElementById('contactForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                const name = document.getElementById('contactName').value;
+                const email = document.getElementById('contactEmail').value;
+                const subject = document.getElementById('contactSubject').value;
+                const message = document.getElementById('contactMessage').value;
+                
+                if (name && email && subject && message) {
+                    alert('မက်ဆေ့ချ်ပို့ပြီးပါပြီ! ကျေးဇူးတင်ပါသည်။');
+                    closeModal('contactModal');
+                }
+            });
         });
+        
+        // Modal functions
+        function showModal(modalId) {
+            document.getElementById(modalId).style.display = 'flex';
+        }
+        
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+        }
+        
+        function showLogin() {
+            closeModal('registerModal');
+            showModal('loginModal');
+        }
+        
+        function showRegister() {
+            closeModal('loginModal');
+            showModal('registerModal');
+        }
+        
+        function showProductDetail(productId) {
+            const products = {
+                1: {
+                    title: 'ဆန်မျိုးစေ့',
+                    image: 'https://via.placeholder.com/400x200/4caf50/ffffff?text=မျိုးစေ့',
+                    price: '၅၀၀၀ ကျပ်',
+                    description: 'အထွက်နှုန်းကောင်းသော ဆန်မျိုးစေ့များ။ ရာသီဥတုဒဏ်ခံနိုင်ရည်ရှိပြီး ရောဂါကျရောက်မှုနည်းပါးသည်။',
+                    details: '• အထွက်နှုန်း: တစ်ဧက ၁၀၀-၁၂၀ တင်း<br>• စိုက်ပျိုးရာသီ: မိုးရာသီ<br>• ရင့်မှည့်ချိန်: ၁၂၀ ရက်<br>• ရေလိုအပ်ချက်: အလယ်အလတ်'
+                },
+                2: {
+                    title: 'အော်ဂဲနစ်မြေဩဇာ',
+                    image: 'https://via.placeholder.com/400x200/4caf50/ffffff?text=မြေဩဇာ',
+                    price: '၁၅၀၀၀ ကျပ်',
+                    description: 'သဘာဝအတိုင်း ပြုလုပ်ထားသော မြေဩဇာ။ မြေဆီလွှာအဟာရဓာတ်ကို မြှင့်တင်ပေးသည်။',
+                    details: '• ပါဝင်ပစ္စည်းများ: သစ်ရွက်ဆွေး, နွားချေး, ကြက်ချေး<br>• NPK အချိုး: ၃-၂-၂<br>• အသုံးပြုနည်း: တစ်ဧက ၅-၁၀ အိတ်<br>• သိမ်းဆည်းနည်း: ခြောက်သွေ့သောနေရာ'
+                },
+                3: {
+                    title: 'သဘာဝပိုးသတ်ဆေး',
+                    image: 'https://via.placeholder.com/400x200/4caf50/ffffff?text=ပိုးသတ်ဆေး',
+                    price: '၁၂၀၀၀ ကျပ်',
+                    description: 'သီးနှံပင်များအတွက် ဘေးကင်းသော ပိုးသတ်ဆေး။ လူနှင့်တိရစ္ဆာန်များအတွက် အန္တရာယ်ကင်းသည်။',
+                    details: '• ပါဝင်ပစ္စည်းများ: နီမ်အဆီ, ချောက်ရွက်အဆီ<br>• အသုံးပြုနည်း: ၂ လီတာရေတွင် ၁၀ မီလီလီတာ ရောစပ်ပါ<br>• ကာကွယ်နိုင်သောပိုးများ: ပျ, ရွက်စားပိုး, သီးလုံးဖောက်ပိုး<br>• သိမ်းဆည်းနည်း: အေးမြသောနေရာ'
+                }
+            };
+            
+            const product = products[productId];
+            if (product) {
+                document.getElementById('detailProductTitle').textContent = product.title;
+                document.getElementById('detailProductContent').innerHTML = `
+                    <div class="product-image" style="background-image: url('${product.image}')"></div>
+                    <div class="product-price" style="font-size: 24px; margin: 10px 0;">${product.price}</div>
+                    <p>${product.description}</p>
+                    <h3 style="margin: 15px 0 10px 0;">အသေးစိတ်အချက်အလက်များ</h3>
+                    <p>${product.details}</p>
+                    <button class="add-to-cart" data-product="${product.title}" data-price="${product.price.replace(/[^\d]/g, '')}" data-id="${productId}" style="margin-top: 15px;">ဈေးခြင်းထဲထည့်ရန်</button>
+                `;
+                
+                // Re-attach event listener to the new add to cart button
+                document.querySelector('#detailProductContent .add-to-cart').addEventListener('click', function() {
+                    const product = this.getAttribute('data-product');
+                    const price = parseInt(this.getAttribute('data-price'));
+                    const id = this.getAttribute('data-id');
+                    
+                    cartCount++;
+                    cartCountElement.textContent = cartCount;
+                    
+                    const existingItem = cartItems.find(item => item.id === id);
+                    if (existingItem) {
+                        existingItem.quantity++;
+                    } else {
+                        cartItems.push({
+                            id: id,
+                            name: product,
+                            price: price,
+                            quantity: 1
+                        });
+                    }
+                    
+                    notification.textContent = '"' + product + '" ကို ဈေးခြင်းထဲသို့ ထည့်သွင်းပြီးပါပြီ!';
+                    notification.style.display = 'block';
+                    
+                    setTimeout(function() {
+                        notification.style.display = 'none';
+                    }, 3000);
+                    
+                    closeModal('productDetailModal');
+                });
+                
+                showModal('productDetailModal');
+            }
+        }
+        
+        function showCheckout() {
+            let orderHTML = '<h3>သင့်အော်ဒါ</h3>';
+            let total = 0;
+            
+            cartItems.forEach(item => {
+                const itemTotal = item.price * item.quantity;
+                total += itemTotal;
+                orderHTML += `
+                    <div class="order-item">
+                        <span>${item.name} (${item.quantity})</span>
+                        <span>${itemTotal.toLocaleString()} ကျပ်</span>
+                    </div>
+                `;
+            });
+            
+            orderHTML += `
+                <div class="order-total">
+                    <span>စုစုပေါင်း</span>
+                    <span>${total.toLocaleString()} ကျပ်</span>
+                </div>
+            `;
+            
+            document.getElementById('orderSummary').innerHTML = orderHTML;
+            showModal('checkoutModal');
+        }
+        
+        function selectPayment(method) {
+            document.querySelectorAll('.payment-method').forEach(el => {
+                el.classList.remove('active');
+            });
+            event.currentTarget.classList.add('active');
+            document.getElementById('paymentMethod').value = method;
+        }
+        
+        function showHome() {
+            alert('ပင်မစာမျက်နှာသို့ ပြန်လည်ရောက်ရှိပါပြီ။');
+        }
+        
+        function showProducts() {
+            alert('ထုတ်ကုန်များစာရင်းကို ကြည့်ရှုနေပါသည်...');
+        }
+        
+        function showAdvice() {
+            alert('စိုက်ပျိုးရေးအကြံပေးချက်များကို ကြည့်ရှုနေပါသည်...');
+        }
+        
+        function showDiscussion() {
+            alert('ဆွေးနွေးခန်းသို့ ဝင်ရောက်နေပါသည်...');
+        }
+        
+        function showAbout() {
+            alert('ကျွန်ုပ်တို့အကြောင်းစာမျက်နှာကို ကြည့်ရှုနေပါသည်...');
+        }
+        
+        function showContact() {
+            showModal('contactModal');
+        }
     </script>
 </body>
 </html>
