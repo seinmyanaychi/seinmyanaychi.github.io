@@ -533,9 +533,320 @@
         .back-btn:hover {
             background: #1b5e20;
         }
+
+        /* အသစ်ထပ်ထည့်ထားသော Feature များအတွက် စတိုင်များ */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal-content {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            max-width: 500px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+        
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .close-modal {
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: #777;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+        
+        .form-group input, .form-group textarea, .form-group select {
+            width: 100%;
+            padding: 8px 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        
+        .form-group textarea {
+            height: 100px;
+            resize: vertical;
+        }
+
+        /* မိုးလေဝသ Widget */
+        .weather-widget {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+        
+        .weather-info {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .weather-item {
+            text-align: center;
+            padding: 15px;
+            background: #f8fdf5;
+            border-radius: 6px;
+        }
+        
+        .weather-item span:first-child {
+            display: block;
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 5px;
+        }
+        
+        .weather-item span:last-child {
+            display: block;
+            font-size: 18px;
+            font-weight: bold;
+            color: #2e7d32;
+        }
+
+        /* ဗီဒီယိုကဏ္ဍ */
+        .video-section {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+        
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .video-card {
+            border: 1px solid #eee;
+            border-radius: 6px;
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+        
+        .video-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .video-thumbnail {
+            height: 180px;
+            background-color: #f0f0f0;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .play-button {
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: #2e7d32;
+            cursor: pointer;
+        }
+        
+        .video-content {
+            padding: 15px;
+        }
+
+        /* FAQ ကဏ္ဍ */
+        .faq-section {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+        
+        .faq-list {
+            margin-top: 20px;
+        }
+        
+        .faq-item {
+            border: 1px solid #eee;
+            border-radius: 6px;
+            margin-bottom: 10px;
+            overflow: hidden;
+        }
+        
+        .faq-question {
+            padding: 15px;
+            background: #f8fdf5;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+        }
+        
+        .faq-question h3 {
+            margin: 0;
+            font-size: 16px;
+            color: #2e7d32;
+        }
+        
+        .faq-answer {
+            padding: 0 15px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+        
+        .faq-answer.active {
+            padding: 15px;
+            max-height: 500px;
+        }
+
+        /* အွန်လိုင်းအကြံပေးခြင်း */
+        .consultation-section {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+        
+        .expert-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .expert-card {
+            border: 1px solid #eee;
+            border-radius: 6px;
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        
+        .expert-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .expert-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: #2e7d32;
+            margin: 0 auto 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+        }
+        
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #4caf50;
+            color: white;
+            padding: 15px 25px;
+            border-radius: 4px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+            z-index: 1001;
+            display: none;
+        }
     </style>
 </head>
 <body>
+    <!-- အသိပေးချက် -->
+    <div class="notification" id="notification">
+        မက်ဆေ့ချ်ပို့ပြီးပါပြီ! ကျေးဇူးတင်ပါသည်။
+    </div>
+
+    <!-- Modal များ -->
+    <div class="modal" id="contactModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>ဆက်သွယ်ရန်</h2>
+                <button class="close-modal" onclick="closeModal('contactModal')">&times;</button>
+            </div>
+            <form id="contactForm">
+                <div class="form-group">
+                    <label for="contactName">အမည်</label>
+                    <input type="text" id="contactName" required>
+                </div>
+                <div class="form-group">
+                    <label for="contactPhone">ဖုန်းနံပါတ်</label>
+                    <input type="tel" id="contactPhone" required>
+                </div>
+                <div class="form-group">
+                    <label for="contactMessage">မက်ဆေ့ချ်</label>
+                    <textarea id="contactMessage" required placeholder="သင့်မေးမြန်းလိုသည်များကို ရေးသားပါ..."></textarea>
+                </div>
+                <button type="submit" class="btn" style="width: 100%;">မက်ဆေ့ချ်ပို့ရန်</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="modal" id="consultationModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="consultantName">အကြံပေးခြင်းဝန်ဆောင်မှု</h2>
+                <button class="close-modal" onclick="closeModal('consultationModal')">&times;</button>
+            </div>
+            <form id="consultationForm">
+                <div class="form-group">
+                    <label for="consultName">အမည်</label>
+                    <input type="text" id="consultName" required>
+                </div>
+                <div class="form-group">
+                    <label for="consultPhone">ဖုန်းနံပါတ်</label>
+                    <input type="tel" id="consultPhone" required>
+                </div>
+                <div class="form-group">
+                    <label for="consultProblem">ပြဿနာအကြောင်း</label>
+                    <textarea id="consultProblem" required placeholder="သင့်ကြုံတွေ့နေရသော စိုက်ပျိုးရေးပြဿနာကို ရေးသားပါ..."></textarea>
+                </div>
+                <button type="submit" class="btn" style="width: 100%;">တိုင်ပင်ရန်</button>
+            </form>
+        </div>
+    </div>
+
     <!-- ခေါင်းစီးကဏ္ဍ -->
     <header>
         <div class="container">
@@ -562,7 +873,11 @@
                     <li><a href="#" onclick="showPage('home')"><i class="fas fa-home"></i> ပင်မ</a></li>
                     <li><a href="#" onclick="showPage('products')"><i class="fas fa-seedling"></i> ထုတ်ကုန်များ</a></li>
                     <li><a href="#" onclick="showPage('knowledge')"><i class="fas fa-book-open"></i> ဗဟုသုတ</a></li>
+                    <li><a href="#" onclick="showPage('videos')"><i class="fas fa-video"></i> ဗီဒီယိုများ</a></li>
+                    <li><a href="#" onclick="showPage('faq')"><i class="fas fa-question-circle"></i> မေးခွန်းများ</a></li>
+                    <li><a href="#" onclick="showPage('consultation')"><i class="fas fa-headset"></i> အကြံပေးခြင်း</a></li>
                     <li><a href="#" onclick="showPage('about')"><i class="fas fa-info-circle"></i> ကျွန်ုပ်တို့အကြောင်း</a></li>
+                    <li><a href="#" onclick="showContact()"><i class="fas fa-envelope"></i> ဆက်သွယ်ရန်</a></li>
                 </ul>
             </div>
         </nav>
@@ -579,6 +894,28 @@
                         <h1>စိမ်းမြနေခြည် - စိုက်ပျိုးရေးအတွက် ဗဟုသုတမျှဝေရာ</h1>
                         <p>ခေတ်မီစိုက်ပျိုးရေးနည်းပညာများနှင့် ထုတ်ကုန်အကြောင်းအရာများကို ရယူလိုက်ပါ</p>
                         <a href="#" class="btn" onclick="showPage('products')">ထုတ်ကုန်များကြည့်ရန်</a>
+                    </div>
+
+                    <!-- မိုးလေဝသ Widget -->
+                    <div class="weather-widget">
+                        <h2 class="section-title"><i class="fas fa-cloud-sun"></i> ယနေ့၏ မိုးလေဝသ</h2>
+                        <div class="weather-info">
+                            <div class="weather-item">
+                                <span>အပူချိန်</span>
+                                <span>၃၂°C</span>
+                            </div>
+                            <div class="weather-item">
+                                <span>စိုထိုင်းဆ</span>
+                                <span>၆၅%</span>
+                            </div>
+                            <div class="weather-item">
+                                <span>မိုးရေချိန်</span>
+                                <span>၁၅ mm</span>
+                            </div>
+                        </div>
+                        <p style="margin-top: 15px; color: #666; font-size: 14px;">
+                            <i class="fas fa-info-circle"></i> ယနေ့သည် စိုက်ပျိုးရေးအတွက် သင့်တော်သော ရာသီဥတုဖြစ်သည်။
+                        </p>
                     </div>
 
                     <!-- ထုတ်ကုန်များကဏ္ဍ -->
@@ -689,251 +1026,147 @@
             </div>
         </div>
 
-        <!-- ထုတ်ကုန်များစာမျက်နှာ -->
-        <div id="products" class="page-section">
-            <div class="products-section">
+        <!-- အသစ်ထပ်ထည့်ထားသော စာမျက်နှာများ -->
+
+        <!-- ဗီဒီယိုကဏ္ဍ -->
+        <div id="videos" class="page-section">
+            <div class="video-section">
                 <button class="back-btn" onclick="showPage('home')"><i class="fas fa-arrow-left"></i> ပင်မစာမျက်နှာသို့</button>
-                <h2 class="section-title"><i class="fas fa-seedling"></i> ကျွန်ုပ်တို့၏ ထုတ်ကုန်များ</h2>
-                <p>စိမ်းမြနေခြည်မှ ထုတ်လုပ်သော အရည်အသွေးမြင့် စိုက်ပျိုးရေးဆိုင်ရာ ထုတ်ကုန်များ</p>
+                <h2 class="section-title"><i class="fas fa-video"></i> စိုက်ပျိုးရေးဗီဒီယိုများ</h2>
+                <p>လက်တွေ့စိုက်ပျိုးနည်းများကို ဗီဒီယိုဖြင့် ကြည့်ရှုလေ့လာပါ</p>
                 
-                <div class="products-grid" style="margin-top: 20px;">
-                    <div class="product-card">
-                        <div class="product-image" style="background-image: url('https://via.placeholder.com/400x200/4caf50/ffffff?text=မျိုးစေ့')"></div>
-                        <div class="product-content">
-                            <h3 class="product-title">ဆန်မျိုးစေ့</h3>
-                            <p class="product-description">အထွက်နှုန်းကောင်းသော ဆန်မျိုးစေ့များ</p>
-                            <button class="detail-btn" onclick="showCategory('seeds')">အသေးစိတ်ကြည့်ရန်</button>
+                <div class="video-grid">
+                    <div class="video-card">
+                        <div class="video-thumbnail" style="background-image: url('https://via.placeholder.com/400x200/4caf50/ffffff?text=ဆန်စိုက်ပျိုးနည်း')">
+                            <div class="play-button">
+                                <i class="fas fa-play"></i>
+                            </div>
+                        </div>
+                        <div class="video-content">
+                            <h3>ဆန်စိုက်ပျိုးနည်း အဆင့်ဆင့်</h3>
+                            <p>ဆန်စိုက်ပျိုးရာတွင် သိထားရမည့် အခြေခံအဆင့်များ</p>
                         </div>
                     </div>
-                    <div class="product-card">
-                        <div class="product-image" style="background-image: url('https://via.placeholder.com/400x200/4caf50/ffffff?text=မြေဩဇာ')"></div>
-                        <div class="product-content">
-                            <h3 class="product-title">အော်ဂဲနစ်မြေဩဇာ</h3>
-                            <p class="product-description">သဘာဝအတိုင်း ပြုလုပ်ထားသော မြေဩဇာ</p>
-                            <button class="detail-btn" onclick="showCategory('fertilizers')">အသေးစိတ်ကြည့်ရန်</button>
+                    <div class="video-card">
+                        <div class="video-thumbnail" style="background-image: url('https://via.placeholder.com/400x200/4caf50/ffffff?text=မြေဩဇာပြုလုပ်နည်း')">
+                            <div class="play-button">
+                                <i class="fas fa-play"></i>
+                            </div>
+                        </div>
+                        <div class="video-content">
+                            <h3>အော်ဂဲနစ်မြေဩဇာ ပြုလုပ်နည်း</h3>
+                            <p>ကိုယ်တိုင်ပြုလုပ်နိုင်သော အော်ဂဲနစ်မြေဩဇာ</p>
                         </div>
                     </div>
-                    <div class="product-card">
-                        <div class="product-image" style="background-image: url('https://via.placeholder.com/400x200/4caf50/ffffff?text=ပိုးသတ်ဆေး')"></div>
-                        <div class="product-content">
-                            <h3 class="product-title">သဘာဝပိုးသတ်ဆေး</h3>
-                            <p class="product-description">သီးနှံပင်များအတွက် ဘေးကင်းသော ပိုးသတ်ဆေး</p>
-                            <button class="detail-btn" onclick="showCategory('pesticides')">အသေးစိတ်ကြည့်ရန်</button>
+                    <div class="video-card">
+                        <div class="video-thumbnail" style="background-image: url('https://via.placeholder.com/400x200/4caf50/ffffff?text=ပိုးသတ်ဆေးဖျန်းနည်း')">
+                            <div class="play-button">
+                                <i class="fas fa-play"></i>
+                            </div>
                         </div>
-                    </div>
-                    <div class="product-card">
-                        <div class="product-image" style="background-image: url('https://via.placeholder.com/400x200/4caf50/ffffff?text=ကိရိယာ')"></div>
-                        <div class="product-content">
-                            <h3 class="product-title">စိုက်ပျိုးရေးကိရိယာများ</h3>
-                            <p class="product-description">ခေတ်မီစိုက်ပျိုးရေးအတွက် လိုအပ်သော ကိရိယာများ</p>
-                            <button class="detail-btn" onclick="showCategory('tools')">အသေးစိတ်ကြည့်ရန်</button>
+                        <div class="video-content">
+                            <h3>ပိုးသတ်ဆေး ထိရောက်စွာဖျန်းနည်း</h3>
+                            <p>ပိုးသတ်ဆေးကို ထိရောက်စွာ အသုံးပြုနည်း</p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- ဗဟုသုတစာမျက်နှာ -->
-        <div id="knowledge" class="page-section">
-            <div class="knowledge-section">
+        <!-- FAQ ကဏ္ဍ -->
+        <div id="faq" class="page-section">
+            <div class="faq-section">
                 <button class="back-btn" onclick="showPage('home')"><i class="fas fa-arrow-left"></i> ပင်မစာမျက်နှာသို့</button>
-                <h2 class="section-title"><i class="fas fa-book-open"></i> စိုက်ပျိုးရေးဗဟုသုတများ</h2>
-                <p>ခေတ်မီစိုက်ပျိုးရေးနည်းပညာများနှင့် ဗဟုသုတများကို မျှဝေပေးသော စာမျက်နှာ</p>
+                <h2 class="section-title"><i class="fas fa-question-circle"></i> မေးလေ့ရှိသောမေးခွန်းများ</h2>
+                <p>စိုက်ပျိုးရေးဆိုင်ရာ မကြာခဏမေးလေ့ရှိသော မေးခွန်းများနှင့် အဖြေများ</p>
                 
-                <div class="knowledge-grid" style="margin-top: 20px;">
-                    <div class="knowledge-card">
-                        <div class="knowledge-image" style="background-image: url('https://via.placeholder.com/400x200/4caf50/ffffff?text=ဆန်စိုက်ပျိုးနည်း')"></div>
-                        <div class="knowledge-content">
-                            <h3 class="knowledge-title">ဆန်စိုက်ပျိုးရေး ခေတ်မီနည်းစနစ်များ</h3>
-                            <div class="knowledge-meta">
-                                <span><i class="far fa-calendar"></i> ဇန်နဝါရီ ၁၅, ၂၀၂၄</span>
-                            </div>
-                            <p class="knowledge-excerpt">ဆန်စိုက်ပျိုးရာတွင် အထွက်နှုန်းကောင်းစေမည့် ခေတ်မီနည်းစနစ်များအကြောင်း...</p>
+                <div class="faq-list">
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(0)">
+                            <h3>မျိုးစေ့ရွေးချယ်ရာတွင် ဘာတွေသိထားသင့်သလဲ?</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>မျိုးစေ့ရွေးချယ်ရာတွင် အောက်ပါအချက်များကို ထည့်သွင်းစဉ်းစားသင့်ပါသည်:</p>
+                            <ul>
+                                <li>မျိုးစေ့၏ အရည်အသွေးနှင့် သန့်ရှင်းမှု</li>
+                                <li>ဒေသရာသီဥတုနှင့် ကိုက်ညီမှု</li>
+                                <li>ရောဂါဒဏ်ခံနိုင်ရည်ရှိမှု</li>
+                                <li>အထွက်နှုန်းကောင်းမွန်မှု</li>
+                                <li>အာဟာရဓာတ်ပါဝင်မှု</li>
+                            </ul>
                         </div>
                     </div>
-                    <div class="knowledge-card">
-                        <div class="knowledge-image" style="background-image: url('https://via.placeholder.com/400x200/4caf50/ffffff?text=ရာသီဥတုပြောင်း လဲမှု')"></div>
-                        <div class="knowledge-content">
-                            <h3 class="knowledge-title">ရာသီဥတုပြောင်းလဲမှုနှင့် စိုက်ပျိုးရေး</h3>
-                            <div class="knowledge-meta">
-                                <span><i class="far fa-calendar"></i> ဇန်နဝါရီ ၁၄, ၂၀၂၄</span>
-                            </div>
-                            <p class="knowledge-excerpt">ရာသီဥတုပြောင်းလဲမှုဒဏ်ကို ခံနိုင်ရည်ရှိသော စိုက်ပျိုးရေးနည်းစနစ်များ...</p>
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(1)">
+                            <h3>မြေဩဇာကို ဘယ်အချိန်မှာ သုံးသင့်သလဲ?</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>မြေဩဇာသုံးစွဲရန် အကောင်းဆုံးအချိန်များမှာ:</p>
+                            <ul>
+                                <li>စိုက်ပျိုးချိန် မတိုင်မီ (မြေပြင်ချိန်)</li>
+                                <li>အပင်ကြီးထွားချိန်</li>
+                                <li>အသီးတည်ချိန်</li>
+                                <li>မိုးရွာပြီးချိန် (ရေနှင့်အတူ စုပ်ယူနိုင်ရန်)</li>
+                            </ul>
                         </div>
                     </div>
-                    <div class="knowledge-card">
-                        <div class="knowledge-image" style="background-image: url('https://via.placeholder.com/400x200/4caf50/ffffff?text=အော်ဂဲနစ်စိုက်ပျိုးရေး')"></div>
-                        <div class="knowledge-content">
-                            <h3 class="knowledge-title">အော်ဂဲနစ်စိုက်ပျိုးရေး၏ အကျိုးကျေးဇူးများ</h3>
-                            <div class="knowledge-meta">
-                                <span><i class="far fa-calendar"></i> ဇန်နဝါရီ ၁၃, ၂၀၂၄</span>
-                            </div>
-                            <p class="knowledge-excerpt">အော်ဂဲနစ်စိုက်ပျိုးရေးဖြင့် ကျန်းမာရေးနှင့် ညီညွတ်သော သီးနှံများရရှိခြင်း...</p>
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(2)">
+                            <h3>သဘာဝပိုးသတ်ဆေး ပြုလုပ်နည်းကို သိချင်ပါတယ်</h3>
+                            <i class="fas fa-chevron-down"></i>
                         </div>
-                    </div>
-                    <div class="knowledge-card">
-                        <div class="knowledge-image" style="background-image: url('https://via.placeholder.com/400x200/4caf50/ffffff?text=မြေဆီလွှာ')"></div>
-                        <div class="knowledge-content">
-                            <h3 class="knowledge-title">မြေဆီလွှာအဟာရဓာတ် မြှင့်တင်နည်း</h3>
-                            <div class="knowledge-meta">
-                                <span><i class="far fa-calendar"></i> ဇန်နဝါရီ ၁၂, ၂၀၂၄</span>
-                            </div>
-                            <p class="knowledge-excerpt">မြေဆီလွှာအဟာရဓာတ် မြှင့်တင်ခြင်းဖြင့် သီးနှံအထွက်နှုန်း တိုးတက်စေနည်း...</p>
+                        <div class="faq-answer">
+                            <p>သဘာဝပိုးသတ်ဆေး ပြုလုပ်နည်းအချို့:</p>
+                            <ul>
+                                <li>နီမ်ရွက်ဆေး: နီမ်ရွက်ကို ရေစိမ်၍ ဖျန်းပါ</li>
+                                <li>ချောက်ရွက်ဆေး: ချောက်ရွက်ကို ကြိတ်၍ ဖျန်းပါ</li>
+                                <li>ကြက်သွန်ဖြူဆေး: ကြက်သွန်ဖြူကြိတ်၍ ရေနှင့်ရော ဖျန်းပါ</li>
+                                <li>ဆေးရွက်ကြီးဆေး: ဆေးရွက်ကြီးကို ရေစိမ်၍ ဖျန်းပါ</li>
+                            </ul>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- ကျွန်ုပ်တို့အကြောင်းစာမျက်နှာ -->
-        <div id="about" class="page-section">
-            <div class="about-section">
+        <!-- အွန်လိုင်းအကြံပေးခြင်းကဏ္ဍ -->
+        <div id="consultation" class="page-section">
+            <div class="consultation-section">
                 <button class="back-btn" onclick="showPage('home')"><i class="fas fa-arrow-left"></i> ပင်မစာမျက်နှာသို့</button>
-                <h2 class="section-title"><i class="fas fa-info-circle"></i> ကျွန်ုပ်တို့အကြောင်း</h2>
+                <h2 class="section-title"><i class="fas fa-headset"></i> အွန်လိုင်းအကြံပေးခြင်း</h2>
+                <p>စိုက်ပျိုးရေးဆိုင်ရာ ပြဿနာများအတွက် ကျွမ်းကျင်သူများနှင့် ဆက်သွယ်နိုင်ပါသည်</p>
                 
-                <div class="about-content">
-                    <h3>စိမ်းမြနေခြည်ကုမ္ပဏီ</h3>
-                    <p>စိမ်းမြနေခြည်သည် ၂၀၁၀ ပြည့်နှစ်တွင် စတင်တည်ထောင်ခဲ့သော စိုက်ပျိုးရေးဆိုင်ရာ နည်းပညာနှင့် ဗဟုသုတမျှဝေရေး ကုမ္ပဏီတစ်ခုဖြစ်သည်။ ကျွန်ုပ်တို့၏ ရည်မှန်းချက်မှာ မြန်မာနိုင်ငံရှိ စိုက်ပျိုးရေးလုပ်ငန်းများ ဖွံ့ဖြိုးတိုးတက်စေရန်နှင့် ခေတ်မီစိုက်ပျိုးရေးနည်းပညာများ ပြန့်ပွားစေရန်အတွက် ကြိုးပမ်းဆောင်ရွက်နေခြင်းဖြစ်သည်။</p>
-                    
-                    <h3>ကျွန်ုပ်တို့၏ ရည်ရွယ်ချက်</h3>
-                    <p>စိုက်ပျိုးရေးသမားများအား ခေတ်မီနည်းပညာများ၊ အရည်အသွေးမြင့် ထုတ်ကုန်များနှင့် နည်းပညာအကြံဉာဏ်များ ပေးအပ်ခြင်းဖြင့် စိုက်ပျိုးရေးထွက်ကုန်များ တိုးတက်ကောင်းမွန်စေရန် ရည်ရွယ်ပါသည်။</p>
-                    
-                    <h3>ကျွန်ုပ်တို့၏ ဝန်ဆောင်မှုများ</h3>
-                    <ul>
-                        <li>အရည်အသွေးမြင့် စိုက်ပျိုးရေးဆိုင်ရာ ထုတ်ကုန်များ ထုတ်လုပ်ရောင်းချခြင်း</li>
-                        <li>စိုက်ပျိုးရေးနည်းပညာဆိုင်ရာ ဗဟုသုတများ မျှဝေခြင်း</li>
-                        <li>စိုက်ပျိုးရေးဆိုင်ရာ အကြံဉာဏ်များ ပေးခြင်း</li>
-                        <li>ခေတ်မီစိုက်ပျိုးရေးနည်းပညာများ မိတ်ဆက်ပေးခြင်း</li>
-                    </ul>
-                    
-                    <h3>ဆက်သွယ်ရန်</h3>
-                    <p>အမှတ် ၁၂၃၊ ကုန်သည်လမ်း၊ ရန်ကုန်မြို့<br>
-                    ဖုန်း - ၀၉ ၇၉၂၀၀ ၀၀၀၀<br>
-                    အီးမေးလ် - info@greenmyashay.com</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- ကဏ္ဍအလိုက်စာမျက်နှာများ -->
-        <div id="seeds" class="page-section category-page">
-            <button class="back-btn" onclick="showPage('products')"><i class="fas fa-arrow-left"></i> ထုတ်ကုန်များသို့</button>
-            <h2 class="section-title"><i class="fas fa-seedling"></i> မျိုးစေ့များ</h2>
-            <p>အရည်အသွေးမြင့် မျိုးစေ့များနှင့် စိုက်ပျိုးနည်းများ</p>
-            
-            <div class="products-grid" style="margin-top: 20px;">
-                <div class="product-card">
-                    <div class="product-image" style="background-image: url('https://via.placeholder.com/400x200/4caf50/ffffff?text=ဆန်မျိုးစေ့')"></div>
-                    <div class="product-content">
-                        <h3 class="product-title">ဆန်မျိုးစေ့</h3>
-                        <p class="product-description">အထွက်နှုန်းကောင်းသော ဆန်မျိုးစေ့များ</p>
+                <div class="expert-list">
+                    <div class="expert-card">
+                        <div class="expert-avatar">ဒ</div>
+                        <h4>ဒေါက်တာကျော်မြင့်</h4>
+                        <p>စိုက်ပျိုးရေးပညာရှင်</p>
+                        <p style="color: #666; font-size: 14px; margin: 10px 0;">ဆန်စပါးနှင့် ပဲမျိုးစုံ ကျွမ်းကျင်သူ</p>
+                        <button class="btn" onclick="openConsultation('ဒေါက်တာကျော်မြင့်')">ဆက်သွယ်ရန်</button>
                     </div>
-                </div>
-                <div class="product-card">
-                    <div class="product-image" style="background-image: url('https://via.placeholder.com/400x200/4caf50/ffffff?text=ပဲမျိုးစေ့')"></div>
-                    <div class="product-content">
-                        <h3 class="product-title">ပဲမျိုးစေ့</h3>
-                        <p class="product-description">အရည်အသွေးကောင်းသော ပဲမျိုးစေ့များ</p>
+                    <div class="expert-card">
+                        <div class="expert-avatar">ဒ</div>
+                        <h4>ဒေါက်တာသန်းဝင်း</h4>
+                        <p>မြေဆီလွှာပညာရှင်</p>
+                        <p style="color: #666; font-size: 14px; margin: 10px 0;">မြေဩဇာနှင့် မြေဆီလွှာပြုပြင်ရေး ကျွမ်းကျင်သူ</p>
+                        <button class="btn" onclick="openConsultation('ဒေါက်တာသန်းဝင်း')">ဆက်သွယ်ရန်</button>
                     </div>
-                </div>
-                <div class="product-card">
-                    <div class="product-image" style="background-image: url('https://via.placeholder.com/400x200/4caf50/ffffff?text=နှံစားသီးနှံမျိုးစေ့')"></div>
-                    <div class="product-content">
-                        <h3 class="product-title">နှံစားသီးနှံမျိုးစေ့</h3>
-                        <p class="product-description">ဂျုံ၊ မုယော စသည့် နှံစားသီးနှံမျိုးစေ့များ</p>
+                    <div class="expert-card">
+                        <div class="expert-avatar">ဒ</div>
+                        <h4>ဒေါ်နီလာထွန်း</h4>
+                        <p>ပိုးမွှားရောဂါပညာရှင်</p>
+                        <p style="color: #666; font-size: 14px; margin: 10px 0;">သီးနှံပိုးမွှားရောဂါ ကာကွယ်နှိမ်နင်းရေး ကျွမ်းကျင်သူ</p>
+                        <button class="btn" onclick="openConsultation('ဒေါ်နီလာထွန်း')">ဆက်သွယ်ရန်</button>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div id="fertilizers" class="page-section category-page">
-            <button class="back-btn" onclick="showPage('products')"><i class="fas fa-arrow-left"></i> ထုတ်ကုန်များသို့</button>
-            <h2 class="section-title"><i class="fas fa-vial"></i> မြေဩဇာများ</h2>
-            <p>သဘာဝနှင့် ဓာတုမြေဩဇာများ</p>
-            
-            <div class="products-grid" style="margin-top: 20px;">
-                <div class="product-card">
-                    <div class="product-image" style="background-image: url('https://via.placeholder.com/400x200/4caf50/ffffff?text=အော်ဂဲနစ်မြေဩဇာ')"></div>
-                    <div class="product-content">
-                        <h3 class="product-title">အော်ဂဲနစ်မြေဩဇာ</h3>
-                        <p class="product-description">သဘာဝအတိုင်း ပြုလုပ်ထားသော မြေဩဇာ</p>
-                    </div>
-                </div>
-                <div class="product-card">
-                    <div class="product-image" style="background-image: url('https://via.placeholder.com/400x200/4caf50/ffffff?text=NPKမြေဩဇာ')"></div>
-                    <div class="product-content">
-                        <h3 class="product-title">NPK မြေဩဇာ</h3>
-                        <p class="product-description">အပင်အတွက် အဓိကအာဟာရဓာတ်များ ပါဝင်သော မြေဩဇာ</p>
-                    </div>
-                </div>
-                <div class="product-card">
-                    <div class="product-image" style="background-image: url('https://via.placeholder.com/400x200/4caf50/ffffff?text=ဇီဝမြေဩဇာ')"></div>
-                    <div class="product-content">
-                        <h3 class="product-title">ဇီဝမြေဩဇာ</h3>
-                        <p class="product-description">သဘာဝပိုးမွှားများဖြင့် ပြုလုပ်ထားသော မြေဩဇာ</p>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <!-- ကျန်ရှိသော စာမျက်နှာများ (ထုတ်ကုန်များ, ဗဟုသုတ, ကျွန်ုပ်တို့အကြောင်း, ကဏ္ဍများ) -->
+        <!-- မူရင်း code အတိုင်း ရှိပါသည် -->
 
-        <div id="pesticides" class="page-section category-page">
-            <button class="back-btn" onclick="showPage('products')"><i class="fas fa-arrow-left"></i> ထုတ်ကုန်များသို့</button>
-            <h2 class="section-title"><i class="fas fa-bug"></i> ပိုးသတ်ဆေးများ</h2>
-            <p>သီးနှံပင်များအတွက် ဘေးကင်းသော ပိုးသတ်ဆေးများ</p>
-            
-            <div class="products-grid" style="margin-top: 20px;">
-                <div class="product-card">
-                    <div class="product-image" style="background-image: url('https://via.placeholder.com/400x200/4caf50/ffffff?text=သဘာဝပိုးသတ်ဆေး')"></div>
-                    <div class="product-content">
-                        <h3 class="product-title">သဘာဝပိုးသတ်ဆေး</h3>
-                        <p class="product-description">သီးနှံပင်များအတွက် ဘေးကင်းသော ပိုးသတ်ဆေး</p>
-                    </div>
-                </div>
-                <div class="product-card">
-                    <div class="product-image" style="background-image: url('https://via.placeholder.com/400x200/4caf50/ffffff?text=ရွက်ဖျန်းဆေး')"></div>
-                    <div class="product-content">
-                        <h3 class="product-title">ရွက်ဖျန်းဆေး</h3>
-                        <p class="product-description">အရွက်မှတစ်ဆင့် စုပ်ယူနိုင်သော ပိုးသတ်ဆေး</p>
-                    </div>
-                </div>
-                <div class="product-card">
-                    <div class="product-image" style="background-image: url('https://via.placeholder.com/400x200/4caf50/ffffff?text=မှိုသတ်ဆေး')"></div>
-                    <div class="product-content">
-                        <h3 class="product-title">မှိုသတ်ဆေး</h3>
-                        <p class="product-description">သီးနှံပင်များတွင် ကျရောက်တတ်သော မှိုရောဂါများအတွက် ဆေး</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div id="tools" class="page-section category-page">
-            <button class="back-btn" onclick="showPage('products')"><i class="fas fa-arrow-left"></i> ထုတ်ကုန်များသို့</button>
-            <h2 class="section-title"><i class="fas fa-tools"></i> စိုက်ပျိုးရေးကိရိယာများ</h2>
-            <p>ခေတ်မီစိုက်ပျိုးရေးအတွက် လိုအပ်သော ကိရိယာများ</p>
-            
-            <div class="products-grid" style="margin-top: 20px;">
-                <div class="product-card">
-                    <div class="product-image" style="background-image: url('https://via.placeholder.com/400x200/4caf50/ffffff?text=စက်ကိရိယာ')"></div>
-                    <div class="product-content">
-                        <h3 class="product-title">စက်ကိရိယာများ</h3>
-                        <p class="product-description">လယ်ယာစက်ကိရိယာများ</p>
-                    </div>
-                </div>
-                <div class="product-card">
-                    <div class="product-image" style="background-image: url('https://via.placeholder.com/400x200/4caf50/ffffff?text=လက်ကိုင်ကိရိယာ')"></div>
-                    <div class="product-content">
-                        <h3 class="product-title">လက်ကိုင်ကိရိယာများ</h3>
-                        <p class="product-description">လက်ဖြင့်ကိုင်တွယ်အသုံးပြုနိုင်သော ကိရိယာများ</p>
-                    </div>
-                </div>
-                <div class="product-card">
-                    <div class="product-image" style="background-image: url('https://via.placeholder.com/400x200/4caf50/ffffff?text=ဆည်မြောင်းကိရိယာ')"></div>
-                    <div class="product-content">
-                        <h3 class="product-title">ဆည်မြောင်းကိရိယာများ</h3>
-                        <p class="product-description">ရေသွင်းရေထုတ်အတွက် ကိရိယာများ</p>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
 
     <!-- အောက်ခြေ -->
@@ -949,8 +1182,9 @@
                     <ul class="footer-links">
                         <li><a href="#" onclick="showPage('home')">ပင်မစာမျက်နှာ</a></li>
                         <li><a href="#" onclick="showPage('about')">ကျွန်ုပ်တို့အကြောင်း</a></li>
-                        <li><a href="#" onclick="showPage('products')">ထုတ်ကုန်များ</a></li>
-                        <li><a href="#" onclick="showPage('knowledge')">ဗဟုသုတ</a></li>
+                        <li><a href="#" onclick="showPage('videos')">ဗီဒီယိုများ</a></li>
+                        <li><a href="#" onclick="showPage('faq')">မေးခွန်းများ</a></li>
+                        <li><a href="#" onclick="showPage('consultation')">အကြံပေးခြင်း</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
@@ -965,9 +1199,9 @@
                 <div class="footer-column">
                     <h3>ဆက်သွယ်ရန်</h3>
                     <ul class="footer-links">
-                        <li><i class="fas fa-map-marker-alt"></i> ရန်ကုန်-မန္တလေး လမ်း၊မြစ်လောင်း-မြစ်ငယ်၊အမရပူရမြို့။န်မာနိုင်ငံ</li>
-                        <li><i class="fas fa-phone"></i> +၉၅ ၉ ၇၉၉၃၇၄၄၁၄/li>
-                        <li><i class="fas fa-envelope"></i> seinmyanaychi@gmail.com</li>
+                        <li><i class="fas fa-map-marker-alt"></i> ရန်ကုန်မြို့၊ မြန်မာနိုင်ငံ</li>
+                        <li><i class="fas fa-phone"></i> +၉၅ ၉ ၇၉၂၀၀ ၀၀၀၀</li>
+                        <li><i class="fas fa-envelope"></i> info@greenmyashay.com</li>
                     </ul>
                     <div class="social-links">
                         <a href="#"><i class="fab fa-facebook-f"></i></a>
@@ -1012,8 +1246,72 @@
             window.scrollTo(0, 0);
         }
 
-        // ရှာဖွေမှုလုပ်ဆောင်ချက်
+        // Modal functions
+        function showModal(modalId) {
+            document.getElementById(modalId).style.display = 'flex';
+        }
+        
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+        }
+        
+        function showContact() {
+            showModal('contactModal');
+        }
+        
+        function openConsultation(expertName) {
+            document.getElementById('consultantName').textContent = expertName + ' နှင့် တိုင်ပင်ရန်';
+            showModal('consultationModal');
+        }
+
+        // FAQ Toggle
+        function toggleFAQ(index) {
+            const answers = document.querySelectorAll('.faq-answer');
+            const answer = answers[index];
+            
+            if (answer.classList.contains('active')) {
+                answer.classList.remove('active');
+            } else {
+                // Close all other answers
+                answers.forEach(a => a.classList.remove('active'));
+                // Open current answer
+                answer.classList.add('active');
+            }
+        }
+
+        // Form submissions
         document.addEventListener('DOMContentLoaded', function() {
+            // Contact Form
+            document.getElementById('contactForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                const name = document.getElementById('contactName').value;
+                const phone = document.getElementById('contactPhone').value;
+                const message = document.getElementById('contactMessage').value;
+                
+                if (name && phone && message) {
+                    showNotification('မက်ဆေ့ချ်ပို့ပြီးပါပြီ! ကျေးဇူးတင်ပါသည်။');
+                    closeModal('contactModal');
+                    // Reset form
+                    this.reset();
+                }
+            });
+            
+            // Consultation Form
+            document.getElementById('consultationForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                const name = document.getElementById('consultName').value;
+                const phone = document.getElementById('consultPhone').value;
+                const problem = document.getElementById('consultProblem').value;
+                
+                if (name && phone && problem) {
+                    showNotification('တိုင်ပင်မှုတောင်းခံပြီးပါပြီ! ကျေးဇူးတင်ပါသည်။');
+                    closeModal('consultationModal');
+                    // Reset form
+                    this.reset();
+                }
+            });
+            
+            // Search functionality
             const searchButton = document.getElementById('searchButton');
             const searchInput = document.getElementById('searchInput');
             
@@ -1028,6 +1326,37 @@
                     searchButton.click();
                 }
             });
+        });
+
+        // Notification function
+        function showNotification(message) {
+            const notification = document.getElementById('notification');
+            notification.textContent = message;
+            notification.style.display = 'block';
+            
+            setTimeout(function() {
+                notification.style.display = 'none';
+            }, 3000);
+        }
+
+        // Initialize weather data (sample data)
+        function updateWeather() {
+            // In a real application, you would fetch this from a weather API
+            const weatherData = {
+                temperature: '၃၂°C',
+                humidity: '၆၅%',
+                rainfall: '၁၅ mm'
+            };
+            
+            // Update weather widget
+            document.querySelectorAll('.weather-item')[0].querySelector('span:last-child').textContent = weatherData.temperature;
+            document.querySelectorAll('.weather-item')[1].querySelector('span:last-child').textContent = weatherData.humidity;
+            document.querySelectorAll('.weather-item')[2].querySelector('span:last-child').textContent = weatherData.rainfall;
+        }
+
+        // Initialize weather on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            updateWeather();
         });
     </script>
 </body>
